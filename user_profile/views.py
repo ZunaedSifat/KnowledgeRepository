@@ -22,15 +22,16 @@ def login(request):
         return render(request, 'user_profile/login.html')
 
 
-@login_required(login_url="profile/logout/")
+@login_required(login_url="/profile/login/")
 def logout(request):
-    if request.method == 'POST':
+    if request.user:
+        print("post request detected")
         auth.logout(request)
         messages.success(request, 'You are now logged out')
 
     return redirect('login')
 
 
-@login_required(login_url="profile/logout/")
+@login_required(login_url="/profile/login/")
 def feed(request):
     return render(request, 'user_profile/feed.html')
