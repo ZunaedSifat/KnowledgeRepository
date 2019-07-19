@@ -1,47 +1,20 @@
-{% load static %}
-
 {% block content %}
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <div class="container">
-
-        <div style="margin-top: 20px;" id="loginbox" class="row justify-content-center">
-
-             <img
-                src="{% static 'LOGO.png' %}"
-                style="margin-bottom: 40px"
-                width="250px"
-                height="200px" alt=""
-            >
-            <form id="login-form" method="post" class="form-horizontal" role="form" >
-
-                {% csrf_token %}
-
-                <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="BRAC id">
-                        </div>
-
-                <div style="margin-bottom: 25px" class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                </div>
-
-
-                <div style="text-align: center;">
-                    <button style="background-color: #F1018A; border: 0;" type="submit" class="btn btn-success d-block mx-auto">
-                        Login
-                    </button>
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
+    <form method="post" id="login-form">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label for="username">Username</label></td>
+                <td><input id="username" name="username"
+                           type="text" class="form-control"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><input id="password" name="password"
+                           type="password" class="form-control"></td>
+            </tr>
+        </table>
+        <input type="submit">
+    </form>
 
 {% endblock %}

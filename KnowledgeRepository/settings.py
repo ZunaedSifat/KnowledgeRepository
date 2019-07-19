@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'KnowledgeRepository',
-    'user_profile'
+    'user_profile',
+    'documents',
+    
 ]
 
 MIDDLEWARE = [
@@ -88,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bracathon',
         'USER': 'postgres',
-        'PASSWORD': 'pg123',
+        'PASSWORD': 'getshitdone',
         'HOST': 'localhost',
         'PORT': 5432
     }
@@ -131,7 +133,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
