@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import DocumentForm
-from .models import Document
+from .models import DocumentModel
 import os
 from .ocr import extract_text
 from KnowledgeRepository.settings import MEDIA_ROOT
@@ -13,7 +13,7 @@ def upload(request):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             obj = form.save()
-            document_path = Document.objects.get(pk=obj.pk).document
+            document_path = DocumentModel.objects.get(pk=obj.pk).document
             full_path = str(os.path.join(MEDIA_ROOT, str(document_path)))
 
             is_pdf = True if full_path.split(".")[-1].lower() == 'pdf' else False
