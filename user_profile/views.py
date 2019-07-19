@@ -34,3 +34,4 @@ def logout(request):
 @login_required(login_url="/profile/login/")
 def feed(request):
     return render(request, 'user_profile/feed.html')
+

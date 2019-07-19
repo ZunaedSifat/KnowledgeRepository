@@ -6,3 +6,5 @@ class DocumentForm(forms.ModelForm):
     class Meta:
         model = DocumentModel
         fields = ('document', 'title', 'author')
+
+

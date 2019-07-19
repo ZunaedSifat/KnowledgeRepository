@@ -21,4 +21,6 @@ app_name = 'documents'
 urlpatterns = [
     path('upload/', views.upload, name='upload'),
     path('upload/files/', views.upload, name='upload_files'),
+    path('search/', views.search, name='search'),
+    path('search_results/', views.search_results, name='search_results')
 ]
