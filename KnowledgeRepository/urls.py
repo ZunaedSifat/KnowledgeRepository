@@ -20,7 +20,7 @@ from user_profile import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.login, name='homepage'),
+    path('', views.feed, name='homepage'),
     path('profile/', include('user_profile.urls')),
     path('documents/', include('documents.urls')),
 ]

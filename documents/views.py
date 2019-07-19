@@ -9,11 +9,13 @@ def upload(request):
         if form.is_valid():
             obj = form.save()
             document_path = Document.objects.get(pk=obj.pk).document
-            print()
+            print(document_path)
 
-            return redirect('homepage')
+            return redirect('feed')
     else:
         form = DocumentForm()
+        print(form.as_p())
     return render(request, 'documents/upload.html', {
         'form': form
     })
+

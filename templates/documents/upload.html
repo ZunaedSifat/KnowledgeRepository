@@ -1,9 +1,31 @@
-{% block content %}
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-  </form>
+{% extends 'user_profile/base.html' %}
 
-  <p><a href="{% url 'homepage' %}">Return to home</a></p>
+{% block styles %}
+
+    #upload-btn {
+        background-color: #F1018A;
+        color: #FFFFFF;
+    }
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    <form id="uploadForm2" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+
+    <script>
+        $(document).ready(function(){
+
+        });
+    </script>
+
+
+
 {% endblock %}
