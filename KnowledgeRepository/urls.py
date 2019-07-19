@@ -23,4 +23,6 @@ urlpatterns = [
     path('', views.feed, name='homepage'),
     path('profile/', include('user_profile.urls')),
     path('documents/', include('documents.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
 ]

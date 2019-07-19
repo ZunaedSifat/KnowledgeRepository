@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.search import SearchVectorField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class DocumentModel(models.Model):
@@ -14,10 +15,19 @@ class DocumentModel(models.Model):
 
 
 class KeywordModel(models.Model):
-    document = models.ManyToManyField(DocumentModel)
+    document = models.ManyToManyField(DocumentModel, related_name='document_set')
     text = models.CharField(max_length=32)
 
 
 class CitationModel(models.Model):
     cited_by = models.ManyToManyField(DocumentModel, related_name='cited_me')
     cited_to = models.ManyToManyField(DocumentModel, related_name='i_cited')
+
+
+class ForumPost(models.Model):
+    title = models.CharField(max_length=64, null=True)
+    author = models.IntegerField(default=1)
+    content = RichTextUploadingField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now=True)
+    view_count = models.IntegerField(default=0)
+

@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     'KnowledgeRepository',
     'user_profile',
     'documents',
-    
+
+    # other app
+    'ckeditor_uploader',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -133,12 +136,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 
@@ -157,3 +160,4 @@ DATABASES['default'].update(prod_db)
 
 # development only
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+CKEDITOR_UPLOAD_PATH = "forum_uploads/"
