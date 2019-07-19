@@ -15,7 +15,6 @@ def login(request):
             messages.success(request, 'You are now logged in')
             return redirect('feed')
         else:
-            # todo: why isn't message working?
             messages.error(request, 'Invalid credentials')
             return redirect('login')
     else:
