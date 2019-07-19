@@ -4,6 +4,8 @@ from .models import Document
 import os
 from .ocr import extract_text
 from KnowledgeRepository.settings import MEDIA_ROOT
+from . import summakeywords
+from . import wordart
 
 
 def upload(request):
@@ -16,11 +18,16 @@ def upload(request):
             # todo : add doc to pdf here
 
             is_pdf = True if full_path.split(".")[-1].lower() == 'pdf' else False
-            print(extract_text(full_path, is_pdf=is_pdf))
+            text = extract_text(full_path, is_pdf=is_pdf)
+            keywords = summakeywords.generate_summa_keywords(text, 'temp/keywords.txt')
+            wordart.generate_word_art('temp/keywords.txt', outputfile='wordart')
+
+            # todo: store keyword in the database
 
             return redirect('homepage')
     else:
         form = DocumentForm()
+        print(form.as_p())
     return render(request, 'documents/upload.html', {
         'form': form
     })
