@@ -1,0 +1,66 @@
+{% extends 'user_profile/base.html' %}
+
+{% block styles %}
+
+    #upload-btn {
+        background-color: #F1018A;
+        color: #FFFFFF;
+    }
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="intro center-content">
+        {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+        <div class="row">
+            <div class="container">
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-6 mx-auto" style="margin-top: 70px">
+                        <h2 id="contact_heading">Leave A Message!</h2>
+                        <form action="{% url 'documents:search_results' %}" method="post">
+                            ' {% csrf_token %}
+                            <div class="form-group row">
+                                <label for="example-email-input" class="col-2 col-form-label">Email</label>
+                                <div class="col-10">
+                                    <input name='author' class="form-control" type="text" id="example-email-input">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-email-input" class="col-2 col-form-label">Subject</label>
+                                <div class="col-10">
+                                    <label>
+                                        <textarea name='title' rows="1" cols="70" class="form-control"></textarea>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-email-input" class="col-2 col-form-label">Message</label>
+                                <div class="col-10">
+                                    <label>
+                                        <textarea name='keywords' rows="8" cols="70" class="form-control"></textarea>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- row -->
+
+    </div><!-- intro -->
+
+
+{% endblock %}

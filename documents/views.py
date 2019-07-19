@@ -1,8 +1,7 @@
-
-
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from .forms import DocumentForm, ForumPostCreationForm
 from .models import DocumentModel, KeywordModel, ForumPost
+from django.db import connection, ProgrammingError
 import os
 from .ocr import extract_text
 from KnowledgeRepository.settings import MEDIA_ROOT
@@ -11,17 +10,41 @@ from . import wordart
 from django.http import HttpResponse
 
 
+def sql_select(sql):
+    cursor = connection.cursor()
+    cursor.execute(sql)
+    results_list = []
+    try:
+        results = cursor.fetchall()
+    except ProgrammingError as e:
+        # print(e)
+        return []
+
+    i = 0
+    for row in results:
+        dict = {}
+        field = 0
+        while True:
+            try:
+                dict[cursor.description[field][0]] = str(results[i][field])
+                field = field + 1
+            except IndexError as e:
+                break
+        i = i + 1
+        results_list.append(dict)
+    return results_list
+
+
 def upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-
-            print("came here")
-
             obj = form.save()
             document = DocumentModel.objects.get(pk=obj.pk)
             document_path = document.document
             document.uploader = request.user.pk
+            print('pk', request.user)
+            document.save()
 
             full_path = str(os.path.join(MEDIA_ROOT, str(document_path)))
             is_pdf = True if full_path.split(".")[-1].lower() == 'pdf' else False
@@ -78,3 +101,17 @@ def show_post(request, pk):
     }
 
     return render(request, 'documents/post.html', context=context)
+
+
+def search(request):
+    return render(request, 'documents/search.html')
+
+
+def search_results(request):
+    if request.method == 'POST':
+        author = request.POST.get("author")
+        title = request.POST.get("title")
+        keywords = str(request.POST.get("keywords")).split()
+        print(author, title, keywords)
+
+    return render(request, 'documents/search_results.html')
