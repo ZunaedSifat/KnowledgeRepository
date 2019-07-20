@@ -9,10 +9,12 @@ staff
 branch
 activity
 organization
+design
 operation
 microfinance
 right
 solution
+set
 ensure
 supervision
 brac
@@ -22,8 +24,6 @@ effectiveness
 proper
 performance
 appropriate financial
-design
-designing
 programme
 operational
 officer
@@ -31,8 +31,6 @@ quality
 support
 objective
 delivery supportive
-set
-setting
 dynamism
 dynamic
 new

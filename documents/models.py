@@ -12,6 +12,7 @@ class DocumentModel(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     ts_vector = SearchVectorField(null=True)
     word_art = models.ImageField(null=True)
+    ocr_text = models.TextField(null=True)
 
 
 class KeywordModel(models.Model):

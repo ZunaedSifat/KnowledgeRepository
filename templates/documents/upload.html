@@ -16,15 +16,11 @@
     <form id="uploadForm2" enctype="multipart/form-data" method="post">
         {% csrf_token %}
         {{ form.as_p }}
+
         <button type="submit">Upload</button>
     </form>
 
 
-    <script>
-        $(document).ready(function(){
-
-        });
-    </script>
 
 
 

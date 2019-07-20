@@ -1,0 +1,45 @@
+{% extends 'user_profile/base.html' %}
+
+{% block styles %}
+
+    #upload-btn {
+        background-color: #F1018A;
+        color: #FFFFFF;
+    }
+
+{% endblock %}
+
+{% block content %}
+
+    <center style="margin: 50px 0px;">
+    <div>
+        <div style="padding-bottom: 10px; color: white;">Keywords</div>
+        <input type="text" value="" data-role="tagsinput" id="keywords" placeholder="Add tags" />
+    </div>
+    </center>
+
+    <form>
+
+        <center>
+        <div class="form-group">
+            <label for="citation" style="color: white">Citation</label>
+            <input type="email" class="form-control col-4" id="citation" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        </center>
+
+        <center>
+        <div class="form-group">
+            <label for="location" style="color: white">Location</label>
+            <input type="password" class="form-control col-4" id="location" placeholder="Password">
+        </div>
+        </center>
+
+        <center><button type="submit" class="btn btn-primary">Submit</button></center>
+
+    </form>
+
+
+
+
+
+{% endblock %}

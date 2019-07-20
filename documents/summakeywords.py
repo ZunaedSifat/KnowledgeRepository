@@ -14,8 +14,8 @@ def lemmatize(words):
     words = dict(words)
 
     for k in words:
-        # lemmatized = lem.lemmatize(k, 'v')
         lemmatized = lem.lemmatize(k)
+        lemmatized = lem.lemmatize(lemmatized, 'v')
         if lemmatized not in lemmatized_words:
             lemmatized_words[lemmatized] = words.get(k)
         else:
@@ -39,7 +39,7 @@ def generate_summa_keywords(text, outputfile):
 
     try:
         _keywords = dict(keywords.keywords(text, scores=True))
-        print(_keywords)
+        # print(_keywords)
         for key, val in _keywords.items():
             if len(key) > 2 and key not in stop_words:
                 valid_keywords[key] = val
