@@ -67,7 +67,7 @@ def upload(request):
 
             ts_vec = "UPDATE documents_documentmodel d1 SET ts_vector = to_tsvector(d1.ocr_text)  where id = #doc_id; "
             ts_vec = ts_vec.replace('#doc_id', str(document.pk))
-            sql_select(ts_vec)
+            print(sql_select(ts_vec))
             context = {
                 'keywords': keywords[0:min(10, len(keywords))]
             }
@@ -81,7 +81,9 @@ def upload(request):
                 keyword.document.add(document)
                 keyword.save()
 
-            return HttpResponse('success!')  # todo pass context
+            context = {'file':document}
+
+            return render(request, 'documents/upload_success.html', context=context)  # todo pass context
     else:
         form = DocumentForm()
         print(form.as_p())
@@ -183,8 +185,8 @@ def search_results(request):
 
     print('value', value)
     print('res1', results)
-    result_docs = []
 
+    result_docs = DocumentModel.objects.all
     try:
         keywords = request.POST.get("keylist")
         keywords = str(keywords).split(',')
@@ -202,6 +204,4 @@ def search_results(request):
     for item in results:
         d = DocumentModel.objects.get(int(item["id"].strip()))
         result_docs.append(d)
-
-
-    return render(request, 'documents/search.html', context={'context': result_docs})
+    return render(request, 'documents/search.html/', context={'context': result_docs})

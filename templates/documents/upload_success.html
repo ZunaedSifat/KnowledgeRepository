@@ -1,0 +1,22 @@
+{% extends 'user_profile/base.html'%}
+{% load static %}
+{% block content %}
+ <div class="intro center-content">
+        <div class="row">
+            <div class="container">
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-6 mx-auto" style="margin-top: 70px">
+                        <h2 id="contact_heading"><B>Successfully Uploaded File<B></h2>
+                        <label style="font-size: 20px"><B>Title:</B></label><label>{{ file.title }}</label>
+                        <br>
+                        <label style="font-size: 20px"><B>Author:</B></label><label>{{ file.author }}</label>
+                        <img src="{% static 'admin/img/wordart.png' %}" alt="file" height="400px" width="600px">
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- row -->
+
+    </div><!-- intro -->
+
+{% endblock %}

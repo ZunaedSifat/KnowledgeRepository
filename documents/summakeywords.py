@@ -6,6 +6,8 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
 
+from documents import wordart
+
 
 def lemmatize(words):
     lem = WordNetLemmatizer()
@@ -54,8 +56,9 @@ def generate_summa_keywords(text, outputfile):
     #         stemmed_words.append(stemmed)
 
     l = lemmatize(valid_keywords)
-    #print('Lemmatized Keywords:', l)
-    #print('Total', l.__len__())
+    # print('Lemmatized Keywords:', l)
+    # print('Total', l.__len__())
+    print('summa',l)
 
     s = str()
     for k, v in l:
@@ -63,6 +66,7 @@ def generate_summa_keywords(text, outputfile):
     file2.write(s)
 
     return l
+
 
 # def generate_summa_keywords_without_lemmatize(inputfile, outputfile):
 #     nltk.download('stopwords')
@@ -96,5 +100,7 @@ def generate_summa_keywords(text, outputfile):
 #         s += v + '\n'
 #     file2.write(s)
 
-
-# l=generate_summa_keywords(open('t.txt','r').read(),'k.txt')
+#
+# l = generate_summa_keywords(open('t.txt', 'r', encoding='UTF-8').read(), 'k.txt')
+#
+# wordart.generate_word_art('k.txt', 'a')

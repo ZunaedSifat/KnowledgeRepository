@@ -1,10 +1,8 @@
-		Featureset
+1.      Problem statement title: “Data Accumulation and Visualization”
 
-Reasoning
+2.      Problem detail: In order to take management decision, programme collects data from field. Most of the requirements addressed through MIS, especially in case of collecting the repetitive data. But programme often need to know further more details based on the MIS data analysis, field observations, agenda from different meeting etc. Currently programme fulfilling this requirement though manual data collection which is time consuming for report compilation and generation.
 
-Python is slow if you’re writing CPU-intensive code in pure Python and running it on one machine, but that isn’t how systems like this work.
+3.      What you want to achieve: Porgramme wants to develop a web based app where programme can develop customised report template to send to field and field team will be able to provide their inputs to generate automatic report.
 
+4.      Why you need this: It will faster the data collection and report generation process which will lead to reduce time, cost and other resources.
 
-Use cases
-
-Python is slow if you’re writing CPU-intensive code in pure Python and running it on one machine, but that isn’t how systems like this work.

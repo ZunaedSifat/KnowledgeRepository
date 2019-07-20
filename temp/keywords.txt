@@ -1,38 +1,37 @@
-client
+office
+record
+data
+time
+phone
+school
+collect
+teacher
+level
+school operation
+area
+student
+register
+attendance
+operate
+quality
+communities operated
+community
+brac
+student information collection
+bep
+cost
+education programme
+ssc
+increase
 management
 manager
-manage
-branch manager
-manages different
-process
-staff
-branch
-activity
-organization
-design
-operation
-microfinance
-right
-solution
-set
-ensure
-supervision
-brac
-daily
-effective
-effectiveness
-proper
-performance
-appropriate financial
-programme
-operational
-officer
-quality
-support
-objective
-delivery supportive
-dynamism
-dynamic
-new
-member
-service
+development
+available
+classroom
+directly
+mi
+app
+apps
+government
+room
+local
