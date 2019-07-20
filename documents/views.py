@@ -6,6 +6,7 @@ from .ocr import extract_text
 from KnowledgeRepository.settings import MEDIA_ROOT
 from . import summakeywords
 from . import wordart
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 
@@ -33,7 +34,9 @@ def upload(request):
                 'keywords': keywords[0:min(10, len(keywords))]
             }
 
-            return
+            return render(request, 'documents/upload_additional.html', {
+                'context': 'wow',
+            })
     else:
         form = DocumentForm()
         print(form.as_p())
@@ -42,6 +45,19 @@ def upload(request):
     })
 
 
-def add_optional_data(request):
-    return HttpResponse("nothing")
+def upload_additional(request):
+    # return HttpResponse("<h1>Hello there!!!</h1>")
+    return render(request, 'documents/upload_additional.html', {'context': 'wow'})
 
+
+@csrf_exempt
+def search(request):
+    if request.method == 'POST':
+
+        select = request.POST['select']
+        value = request.POST['value']
+        keys = request.POST['keylist'].split(',')
+
+        return render(request, 'documents/search.html', )
+
+    return render(request, 'documents/search.html', {'context': 'wow'})

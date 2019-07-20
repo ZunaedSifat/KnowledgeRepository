@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bracathon',
         'USER': 'postgres',
-        'PASSWORD': 'getshitdone',
+        'PASSWORD': 'pg123',
         'HOST': 'localhost',
         'PORT': 5432
     }

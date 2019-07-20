@@ -1,10 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'user_profile/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+
+    #upload-btn {
+        background-color: #F1018A;
+        color: #FFFFFF;
+    }
+
+{% endblock %}
+
+{% block content %}
+
+    <form class="form-inline" style="margin: 50px 0px 20px 0px;">
+
+        {% csrf_token %}
+
+        <input id="value" class="form-control col-3 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <div class="form-group mr-sm-2">
+            <select class="form-control" id="select">
+                <option>Document</option>
+                <option>Author</option>
+                <option>Text Search</option>
+            </select>
+        </div>
+
+        <button id="search-btn" class="btn btn-success my-2 my-sm-0" style="background-color: #f1018a; border: 0" type="submit">
+            Search
+        </button>
+
+    </form>
+
+    <div style="margin-bottom: 30px">
+        <input type="text" value="" class="btn btn-success my-2 my-sm-0" data-role="tagsinput" id="keywords" placeholder="Select keywords" />
+    </div>
+
+    <div class="card-columns" style="margin-right: 200px">
+
+        <div class="card text-center">
+            <div class="card-body ">
+
+                <img
+                    class="card-img-top"
+                    src="{% static 'bran.png' %}"
+                    alt="Card image cap"
+                    style="margin-bottom: 15px"
+                >
+
+                <h5 class="card-title">
+                    Logo dara premer rasta clear kora
+                </h5>
+
+              <p class="card-text"><small class="text-muted">Amiyi Priyeta</small></p>
+
+                <span class="badge badge-primary">primary</span>
+                <span class="badge badge-primary">primary</span>
+                <span class="badge badge-primary">primary</span>
+                <span class="badge badge-primary">primary</span>
+                <span class="badge badge-primary">primary</span>
+                <span class="badge badge-primary">primary</span>
+                <span class="badge badge-primary">primary</span>
+
+            </div>
+        </div>
+
+    </div>
+
+<script>
+    $(document).ready(function() {
+        $("#search-btn").click(function() {
+            var option = $("#select").val();
+            var name = $("#value").val();
+
+
+            var keywords;
+            function disp( tags ) {
+              var a = [];
+              for ( var i = 0; i < tags.length; i++ ) {
+                var str = tags[i].innerHTML;
+
+                a.push(str.substring(0, str.length-32));
+              }
+              keywords = a.join();
+            }
+            disp($(".tag.label.label-info").toArray());
+
+            $.post("http://127.0.0.1:8000/documents/search/", {select:option, value:name, keylist:keywords});
+
+        });
+    });
+</script>
+{% endblock %}
+
