@@ -9,6 +9,7 @@ from .ocr import extract_text
 from KnowledgeRepository.settings import MEDIA_ROOT
 from . import summakeywords
 from . import wordart
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 
@@ -92,8 +93,9 @@ def upload(request):
     })
 
 
-def add_optional_data(request):
-    return HttpResponse("nothing")
+def upload_additional(request):
+    # return HttpResponse("<h1>Hello there!!!</h1>")
+    return render(request, 'documents/upload_additional.html', {'context': 'wow'})
 
 
 def add_post(request):
