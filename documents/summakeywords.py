@@ -14,8 +14,8 @@ def lemmatize(words):
     words = dict(words)
 
     for k in words:
-        # lemmatized = lem.lemmatize(k, 'v')
         lemmatized = lem.lemmatize(k)
+        lemmatized = lem.lemmatize(lemmatized, 'v')
         if lemmatized not in lemmatized_words:
             lemmatized_words[lemmatized] = words.get(k)
         else:
@@ -35,15 +35,14 @@ def generate_summa_keywords(text, outputfile):
 
     ps = PorterStemmer()
     _keywords = list()
+    valid_keywords = dict()
 
     try:
         _keywords = dict(keywords.keywords(text, scores=True))
-        print('Summa Generated Keywords', _keywords)
-        print('Total', _keywords.__len__())
-        for k in _keywords:
-            if k in stop_words:
-                _keywords.pop(k)
-                print('Removed StopWord', k)
+        # print(_keywords)
+        for key, val in _keywords.items():
+            if len(key) > 2 and key not in stop_words:
+                valid_keywords[key] = val
     except UnicodeDecodeError:
         print('Error')
 
@@ -54,15 +53,16 @@ def generate_summa_keywords(text, outputfile):
     #     if stemmed not in stemmed_words:
     #         stemmed_words.append(stemmed)
 
-    l = lemmatize(_keywords)
-    print('Lemmatized Keywords:', l)
-    print('Total', l.__len__())
+    l = lemmatize(valid_keywords)
+    #print('Lemmatized Keywords:', l)
+    #print('Total', l.__len__())
 
     s = str()
     for k, v in l:
         s += k + '\n'
     file2.write(s)
 
+    return l
 
 # def generate_summa_keywords_without_lemmatize(inputfile, outputfile):
 #     nltk.download('stopwords')
@@ -95,3 +95,6 @@ def generate_summa_keywords(text, outputfile):
 #     for v in _keywords:
 #         s += v + '\n'
 #     file2.write(s)
+
+
+# l=generate_summa_keywords(open('t.txt','r').read(),'k.txt')

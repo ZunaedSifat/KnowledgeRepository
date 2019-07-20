@@ -1,5 +1,7 @@
 from django import forms
 from .models import DocumentModel, CitationModel, KeywordModel
+=======
+from .models import DocumentModel, ForumPost
 
 
 class DocumentForm(forms.ModelForm):
@@ -18,3 +20,7 @@ class KeywordForm(forms.ModelForm):
     class Meta:
         model = KeywordModel
         fields = ('text', )
+class ForumPostCreationForm(forms.ModelForm):
+    class Meta:
+        model = ForumPost
+        fields = ('title', 'content')

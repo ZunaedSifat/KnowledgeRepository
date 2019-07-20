@@ -20,7 +20,7 @@
         <input id="value" class="form-control col-3 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <div class="form-group mr-sm-2">
             <select class="form-control" id="select">
-                <option>Document</option>
+                <option>Title</option>
                 <option>Author</option>
                 <option>Text Search</option>
             </select>
@@ -86,7 +86,7 @@
             }
             disp($(".tag.label.label-info").toArray());
 
-            $.post("http://127.0.0.1:8000/documents/search/", {select:option, value:name, keylist:keywords});
+            $.post("http://127.0.0.1:8000/documents/search_results/", {select:option, value:name, keylist:keywords});
 
         });
     });
